@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="SysUserTask">
+    <default-activity>SysUser_List</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__8">
+      <managed-bean-name>backing_modules_sys_SysUser_List</managed-bean-name>
+      <managed-bean-class>com.minhdt.view.backing.modules.sys.SysUser_List</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1modules/sys/SysUser_List.jsff-->
+    </managed-bean>
+    <view id="SysUser_List">
+      <page>/modules/sys/SysUser_List.jsff</page>
+    </view>
+    <view id="SysUser_Add"></view>
+    <view id="SysUser_Edit"></view>
+    <control-flow-rule id="__1">
+      <from-activity-id>SysUser_List</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>add</from-outcome>
+        <to-activity-id>SysUser_Add</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>edit</from-outcome>
+        <to-activity-id>SysUser_Edit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>SysUser_Add</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>SysUser_List</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>SysUser_Edit</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>SysUser_List</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_modules_sys_SysUser_List-->
+</ui:composition>
