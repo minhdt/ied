@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ied="/ied/tag">
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_modules_sys_SysGroup_List-->
+    <ied:page>
+        <f:facet name="title">
+            <af:group>
+                <li>
+                    <af:link action="back" text="Trang chủ" inlineStyle="color: #444444;">
+                        <i class="zmdi zmdi-chevron-right"></i>
+                    </af:link>
+                </li>
+                <li class="active-page">Quản lý nhóm quyền</li>
+            </af:group>
+        </f:facet>
+        <f:facet name="content">
+            <af:group>
+                <div class="widget-wrap material-table-widget widget-wrap-custom">
+                    <div class="widget-header block-header margin-bottom-0 clearfix widget-header-custom">
+                        <div class="pull-left">
+                            <h3>Nhóm quyền</h3>
+                            <p>Danh sách nhóm quyền</p>
+                        </div>
+                        <div class="data-align-right">
+                            <div class="tbl-action-toolbar">
+                                <ul>
+                                    <li>
+                                        <af:link id="lbtSearch" styleClass="clear-filter btn btn-link link-icon"
+                                                 partialSubmit="true" text="Tìm kiếm"
+                                                 actionListener="#{pageFlowScope.backing_modules_sys_SysGroup_List.lbtSearch_Action}"/>
+                                    </li>
+                                    <li>
+                                        <af:link id="lbtExport" styleClass="btn btn-info link-btn" text="Kết xuất"/>
+                                    </li>
+                                    <li>
+                                        <af:link id="lbtAdd" styleClass="btn btn-primary link-btn" text="Thêm mới"
+                                                 action="#{pageFlowScope.backing_modules_sys_SysGroup_List.lbtAdd_Action}"/>
+                                    </li>
+                                    <li class="widget-toggle">
+                                        <af:link id="lbtHide" partialSubmit="true" inlineStyle="width: 39px; height:39px;"
+                                                 styleClass="btn btn-default"
+                                                 shortDesc="Ẩn/hiện tìm kiếm">
+                                            <i class="zmdi zmdi-chevron-down"></i>
+                                        </af:link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-container margin-top-0">
+                        <div class="widget-content">
+                            <div class="table-filter-header">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4">
+                                        <span class="tfh-label">Tên nhóm quyền: </span>
+                                         
+                                        <af:inputText id="txtName" simple="true" autoSubmit="true"/>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        <span class="tfh-label">Tình trạng: </span>
+                                         
+                                        <af:selectOneChoice id="socStatus" simple="true" autoSubmit="true">
+                                            <af:selectItem label="Active" value="All"/>
+                                            <af:selectItem label="Disabled" value="All"/>
+                                            <af:selectItem label="Suspended" value="All"/>
+                                        </af:selectOneChoice>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        <span class="tfh-label">Ngày tạo: </span>
+                                         
+                                        <af:inputDate id="ipdCreateDate" simple="true" autoSubmit="true">
+                                            <af:convertDateTime dateStyle="short" pattern="dd/MM/yyyy"
+                                                                secondaryPattern="ddMMyyyy"/>
+                                        </af:inputDate>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-container margin-top-0">
+                        <div class="widget-content">
+                            <af:panelGroupLayout partialTriggers="lbtSearch">
+                                <table class="table foo-data-table footable-loaded footable">
+                                    <thead>
+                                        <tr>
+                                            <th data-sort-ignore="true" style="width: 80px;">STT</th>
+                                            <th style="width: 300px;">Tên nhóm quyền</th>
+                                            <th data-sort-ignore="true">Mô tả</th>
+                                            <th style="width: 120px;">Ngày tạo</th>
+                                            <th style="width: 120px;">Tình trạng</th>
+                                            <th data-sort-ignore="true" style="width: 120px;"></th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody id="sysGroupData">
+                                        <af:forEach items="#{pageFlowScope.backing_modules_sys_SysGroup_List.demoData}"
+                                                    var="row" varStatus="vs">
+                                            <tr class="#{vs.index % 2 eq 0 ? 'footable-even' : 'footable-odd'}" style="display: table-row;">
+                                                <td class="footable-visible footable-first-column">
+                                                    <af:outputText value="#{vs.index + 1}"/>
+                                                </td>
+                                                <td class="footable-visible">
+                                                    <af:outputText value="#{row[0]}"/>
+                                                </td>
+                                                <td class="footable-visible">
+                                                    <af:outputText value="#{row[1]}"/>
+                                                </td>
+                                                <td class="footable-visible">
+                                                    <af:outputText value="#{row[2]}"/>
+                                                </td>
+                                                <td class="footable-visible">
+                                                    <span class="label label-#{row[3] eq 1 ? 'success' : row[3] eq 0 ? 'default' : 'danger'}"
+                                                          title="#{row[3] eq 1 ? 'active' : row[3] eq 0 ? 'disabled' : 'suspended'}">
+                                                        <af:outputText value="#{row[3] eq 1 ? 'Hoạt động' : row[3] eq 0 ? 'Tạm dừng' : 'Đã xoá'}"/></span>
+                                                </td>
+                                                <td class="td-center footable-visible footable-last-column">
+                                                    <af:link id="lbtEdit" styleClass="link-icon" partialSubmit="true"
+                                                             actionListener="#{pageFlowScope.backing_modules_sys_SysGroup_List.lbtEdit_Action}"
+                                                             action="#{pageFlowScope.backing_modules_sys_SysGroup_List.lbtEdit_Action}">
+                                                        <span class="zmdi zmdi-edit" style=" font-size: 16px;"></span>
+                                                        <af:clientAttribute name="SelectedRowData" value="#{row}"/>
+                                                    </af:link>
+                                                     
+                                                    <af:link id="lbtDelete" styleClass="link-icon" partialSubmit="true"
+                                                             actionListener="#{pageFlowScope.backing_modules_sys_SysGroup_List.lbtDelete_Action}">
+                                                        <span class="zmdi zmdi-close" style=" font-size: 20px;"></span>
+                                                        <af:clientAttribute name="SelectedRowData" value="#{row}"/>
+                                                        <af:serverListener type="handleConfirmDelete"
+                                                                           method="#{pageFlowScope.backing_modules_sys_SysGroup_List.handleConfirmDelete_action}"/>
+                                                    </af:link>
+                                                </td>
+                                            </tr>
+                                        </af:forEach>
+                                    </tbody>
+                                </table>
+                            </af:panelGroupLayout>
+                        </div>
+                    </div>
+                </div>
+            </af:group>
+        </f:facet>
+    </ied:page>
+</ui:composition>

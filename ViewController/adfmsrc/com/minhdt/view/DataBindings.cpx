@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.10.8" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.minhdt.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/modules/sys/SysGroup.jsf" usageId="com_minhdt_view_SysGroupPageDef"/>
+    <page path="/modules/sys/SysGroup_List.jsff" usageId="com_minhdt_view_SysGroup_ListPageDef"/>
+    <page path="/login.jsf" usageId="com_minhdt_view_loginPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_minhdt_view_SysGroupPageDef" path="modules.sys.SysGroupPageDef"/>
+    <page id="com_minhdt_view_SysGroup_ListPageDef" path="modules.sys.SysGroup_ListPageDef"/>
+    <page id="com_minhdt_view_loginPageDef" path="com.minhdt.view.pageDefs.loginPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="SB_SystemBean" path="com.minhdt.SB_SystemBean"/>
+  </dataControlUsages>
+</Application>

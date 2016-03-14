@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Quản lý nhóm quyền" id="d1"  styleClass="leftbar-view" maximized="false">
+        <af:form id="f1">
+            <af:pageTemplate viewId="/template/IED_Template.jsf" id="pt1" >
+                <f:facet name="main">
+                    <af:region value="#{bindings.SysGroupTask1.regionModel}" id="r1"/>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_modules_sys_SysGroup-->
+</f:view>

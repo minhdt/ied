@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="SysGroupTask">
+    <default-activity>SysGroup_List</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>backing_modules_sys_SysGroup_List</managed-bean-name>
+      <managed-bean-class>com.minhdt.view.backing.modules.sys.SysGroup_List</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1modules/sys/SysGroup_List.jsff-->
+    </managed-bean>
+    <managed-bean id="__9">
+      <managed-bean-name>backing_modules_sys_SysGroup_Add</managed-bean-name>
+      <managed-bean-class>com.minhdt.view.backing.modules.sys.SysGroup_Add</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1modules/sys/SysGroup_Add.jsff-->
+    </managed-bean>
+    <managed-bean id="__10">
+      <managed-bean-name>backing_modules_sys_SysGroup_Edit</managed-bean-name>
+      <managed-bean-class>com.minhdt.view.backing.modules.sys.SysGroup_Edit</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1modules/sys/SysGroup_Edit.jsff-->
+    </managed-bean>
+    <view id="SysGroup_List">
+      <page>/modules/sys/SysGroup_List.jsff</page>
+    </view>
+    <view id="SysGroup_Add">
+      <page>/modules/sys/SysGroup_Add.jsff</page>
+    </view>
+    <view id="SysGroup_Edit">
+      <page>/modules/sys/SysGroup_Edit.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>SysGroup_List</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>add</from-outcome>
+        <to-activity-id>SysGroup_Add</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>edit</from-outcome>
+        <to-activity-id>SysGroup_Edit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>SysGroup_Add</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>SysGroup_List</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>SysGroup_Edit</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>SysGroup_List</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

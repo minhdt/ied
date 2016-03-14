@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:componentDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns="http://www.w3.org/1999/xhtml"
+                 var="attrs" componentVar="comp" definition="public">
+    <af:xmlContent>
+        <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+            <description/>
+            <display-name>jsContent</display-name>
+            <facet>
+                <facet-name>jscontent</facet-name>
+            </facet>
+        </component>
+    </af:xmlContent>
+    
+    <af:resource type="javascript" source="/ied_resources/js/lib/jquery.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/jquery-migrate.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/bootstrap.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/jquery.ui.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/jRespond.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/nav.accordion.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/hover.intent.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/hammerjs.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/jquery.hammer.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/jquery.fitvids.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/scrollup.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/smoothscroll.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/jquery.slimscroll.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/jquery.syntaxhighlighter.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/velocity.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/smart-resize.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/select2.full.js"/>
+    <!--Tables-->
+    <af:resource type="javascript" source="/ied_resources/js/lib/footable.all.js"/>
+    <!--Ui Elements - Notify-->
+    <af:resource type="javascript" source="/ied_resources/js/lib/jquery.noty.js"/>
+    <!--Ui Elements - Confirm-->
+    <af:resource type="javascript" source="/ied_resources/js/lib/sweetalert.js"/>
+    <!--Ui Elements - Popup-->
+    <af:resource type="javascript" source="/ied_resources/js/lib/bootbox.js"/>
+    <!--Exportable Data Tables-->
+    <af:resource type="javascript" source="/ied_resources/js/lib/tableExport.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/jquery.base64.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/sprintf.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/jspdf.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/base64.js"/>
+    <!--Forms-->
+    <af:resource type="javascript" source="/ied_resources/js/lib/jquery.maskedinput.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/jquery.validate.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/jquery.form.js"/>
+    <af:resource type="javascript" source="/ied_resources/js/lib/j-forms.js"/>
+    
+    <af:resource type="javascript" source="/ied_resources/js/apps.js"/>
+    
+    
+    <af:facetRef facetName="jscontent"/>
+</af:componentDef>
+

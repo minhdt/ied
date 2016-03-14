@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="12.1.3.10.8" id="DataControls"
+                    Package="com.minhdt">
+  <AdapterDataControl id="SB_SystemBean" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="com.minhdt.model.services.SB_SystemBean"
+                      BeanClass="com.minhdt.model.services.SB_SystemBean"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="SB_System" ejb-type="Session"
+                      ejb-business-interface="com.minhdt.model.services.SB_SystemLocal" ejb-interface-type="local"
+                      initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.jpa.JPQLDataFilterHandler"
+                      AccessMode="scrollable" EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

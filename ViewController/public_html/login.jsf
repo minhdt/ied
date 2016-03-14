@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns="http://www.w3.org/1999/xhtml">
+    <af:document title="Đăng nhập" id="d1" styleClass="login-page"
+                 inlineStyle="background-image: url('/ied_resources/images/whitey.png') !important; background-size: auto !important;">
+        <f:facet name="metaContainer">
+            <af:group id="metaContainer">
+                <meta charset="utf-8" content="utf-8"/>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+                <af:resource type="css" source="/ied_resources/css/font-awesome.css"/>
+                <af:resource type="css" source="/ied_resources/css/material-design-iconic-font.css"/>
+                <af:resource type="css" source="/ied_resources/css/bootstrap.css"/>
+                <af:resource type="css" source="/ied_resources/css/animate.css"/>
+                <af:resource type="css" source="/ied_resources/css/layout.css"/>
+                <af:resource type="css" source="/ied_resources/css/components.css"/>
+                <af:resource type="css" source="/ied_resources/css/widgets.css"/>
+                <af:resource type="css" source="/ied_resources/css/plugins.css"/>
+                <af:resource type="css" source="/ied_resources/css/pages.css"/>
+                <af:resource type="css" source="/ied_resources/css/bootstrap-extend.css"/>
+                <af:resource type="css" source="/ied_resources/css/common.css"/>
+                <af:resource type="css" source="/ied_resources/css/responsive.css"/>
+                <af:resource type="css" source="/ied_resources/css/adf-custom.css"/>
+            </af:group>
+        </f:facet>
+        <section class="login-container boxed-login">
+            <div class="container">
+                <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+                    <div class="login-form-container">
+                        <af:form styleClass="j-forms" id="forms-login">
+                            <div class="login-form-header">
+                                <div class="logo">
+                                    <a href="index.html" title="Admin Template">
+                                        <img src="/ied_resources/images/logo-dark.png" alt="logo"/></a>
+                                </div>
+                            </div>
+                            <div class="login-form-content">
+                                <!-- start login -->
+                                <div class="unit">
+                                    <div class="input login-input">
+                                        <label class="icon-left" for="txtUserName">
+                                            <i class="zmdi zmdi-account"></i>
+                                        </label>
+                                         
+                                        <af:inputText id="txtUserName" simple="true" autoSubmit="true"
+                                                      placeholder="Tên đăng nhập"
+                                                      styleClass="login-form login-frm-input"
+                                                      value="#{viewScope.backing_login.txtUserName}"/>
+                                    </div>
+                                </div>
+                                <!-- end login -->
+                                <!-- start password -->
+                                <div class="unit">
+                                    <div class="input login-input">
+                                        <label class="icon-left" for="txtPassword">
+                                            <i class="zmdi zmdi-key"></i>
+                                        </label>
+                                         
+                                        <af:inputText id="txtPassword" simple="true" autoSubmit="true"
+                                                      placeholder="Mật khẩu" secret="true"
+                                                      styleClass="login-form login-frm-input"
+                                                      value="#{viewScope.backing_login.txtPassword}"/>
+                                    </div>
+                                </div>
+                                <!-- end password -->
+                                <!-- start keep logged -->
+                                <div class="unit">
+                                    <label class="checkbox">
+                                        <input id="cbRemember" type="checkbox" name="logged" value="false" checked=""
+                                               onchange="rememberChange();"/>
+                                        <i></i>
+                                        Ghi nhớ?
+                                    </label>
+                                     
+                                    <af:selectBooleanCheckbox id="sbcRemember" simple="true" autoSubmit="true"
+                                                              inlineStyle="position: absolute; left:-9999px;"
+                                                              value="#{viewScope.backing_login.sbcRemember}"/>
+                                </div>
+                                <!-- end keep logged -->
+                            </div>
+                            <div class="login-form-footer">
+                                <af:link id="lbtLogin" partialSubmit="true" styleClass="btn-block btn btn-primary"
+                                         action="#{viewScope.backing_login.lbtLogin_Action}">Đăng nhập</af:link>
+                            </div>
+                        </af:form>
+                    </div>
+                </div>
+            </div>
+            <footer class="login-page-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+                            <div class="footer-content">
+                                <span class="footer-meta">Crafted with&nbsp;<i class="fa fa-heart"></i>&nbsp;by&nbsp;<a href="#">MinhDT</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </section>
+        <af:resource type="javascript" source="/ied_resources/js/lib/jquery.js"/>
+        <af:resource type="javascript" source="/ied_resources/js/lib/jquery-migrate.js"/>
+        <af:resource type="javascript" source="/ied_resources/js/lib/bootstrap.js"/>
+        <af:resource type="javascript" source="/ied_resources/js/lib/jRespond.js"/>
+        <af:resource type="javascript" source="/ied_resources/js/lib/hammerjs.js"/>
+        <af:resource type="javascript" source="/ied_resources/js/lib/jquery.hammer.js"/>
+        <af:resource type="javascript" source="/ied_resources/js/lib/smoothscroll.js"/>
+        <af:resource type="javascript" source="/ied_resources/js/lib/smart-resize.js"/>
+        <af:resource type="javascript" source="/ied_resources/js/lib/jquery.validate.js"/>
+        <af:resource type="javascript" source="/ied_resources/js/lib/jquery.form.js"/>
+        <af:resource type="javascript" source="/ied_resources/js/lib/j-forms.js"/>
+        <af:resource type="javascript" source="/ied_resources/js/lib/login-validation.js"/>
+        <af:resource type="javascript" source="/ied_resources/js/lib/jquery.noty.js"/>
+        <af:resource type="javascript">
+          function rememberChange() {
+              var cbRemember = document.getElementById("cbRemember");
+              var remember = document.getElementById("sbcRemember::content");
+              remember.checked = cbRemember.checked;
+          }
+        </af:resource>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_login-->
+</f:view>

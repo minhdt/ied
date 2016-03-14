@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<declarativeCompDefs xmlns="http://xmlns.oracle.com/adf/faces/rich/declarativecomp">
+  <declarativecomp-jsp-ui-def>/component/page.jsf</declarativecomp-jsp-ui-def>
+  <declarativecomp-taglib>
+    <taglib-name>IED Component</taglib-name>
+    <taglib-uri>/ied/tag</taglib-uri>
+    <taglib-prefix>ied</taglib-prefix>
+  </declarativecomp-taglib>
+</declarativeCompDefs>

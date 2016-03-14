@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:componentDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                 xmlns="http://www.w3.org/1999/xhtml"
+                 var="attrs"
+                 componentVar="comp" definition="public">
+    <af:xmlContent>
+        <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+            <description/>
+            <display-name>HeadTag</display-name>
+            <facet>
+                <facet-name>headtag</facet-name>
+            </facet>
+        </component>
+    </af:xmlContent>
+    
+    <meta charset="utf-8" content="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    
+    <af:resource type="css" source="/ied_resources/css/font-awesome.css"/>
+    <af:resource type="css" source="/ied_resources/css/material-design-iconic-font.css"/>
+    <af:resource type="css" source="/ied_resources/css/bootstrap.css"/>
+    <af:resource type="css" source="/ied_resources/css/animate.css"/>
+    <af:resource type="css" source="/ied_resources/css/layout.css"/>
+    <af:resource type="css" source="/ied_resources/css/components.css"/>
+    <af:resource type="css" source="/ied_resources/css/widgets.css"/>
+    <af:resource type="css" source="/ied_resources/css/plugins.css"/>
+    <af:resource type="css" source="/ied_resources/css/pages.css"/>
+    <af:resource type="css" source="/ied_resources/css/bootstrap-extend.css"/>
+    <af:resource type="css" source="/ied_resources/css/common.css"/>
+    <af:resource type="css" source="/ied_resources/css/responsive.css"/>
+    <af:resource type="css" source="/ied_resources/css/adf-custom.css"/>
+    
+    <af:facetRef facetName="headtag"/>
+</af:componentDef>
+

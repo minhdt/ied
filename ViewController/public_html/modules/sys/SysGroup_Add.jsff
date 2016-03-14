@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ied="/ied/tag">
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_modules_sys_SysGroup_Add-->
+    <ied:page>
+        <f:facet name="title">
+            <af:group>
+                <li>
+                    <af:link action="back" text="Quản lý nhóm quyền" inlineStyle="color: #444444;">
+                        <i class="zmdi zmdi-chevron-right"></i>
+                    </af:link>
+                </li>
+                <li class="active-page">Thêm mới</li>
+            </af:group>
+        </f:facet>
+        <f:facet name="content">
+            <af:group>
+                <div class="widget-wrap material-table-widget widget-wrap-custom">
+                    <div class="widget-header block-header margin-bottom-0 clearfix widget-header-custom">
+                        <div class="pull-left">
+                            <h3>Nhóm quyền</h3>
+                            <p>Thêm mới nhóm quyền</p>
+                        </div>
+                    </div>
+                    <div class="widget-container margin-top-0">
+                        <div class="widget-content">
+                            <div class="smart-form">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4">
+                                        <span class="tfh-label">Tên nhóm quyền: </span>
+                                         
+                                        <af:inputText id="txtName" simple="true" autoSubmit="true"/>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        <span class="tfh-label">Tình trạng: </span>
+                                         
+                                        <af:inputText id="txtDescription" simple="true" autoSubmit="true"/>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4">
+                                        <span class="tfh-label">Ngày tạo: </span>
+                                         
+                                        <af:inputDate id="ipdCreateDate" simple="true" autoSubmit="true">
+                                            <af:convertDateTime dateStyle="short" pattern="dd/MM/yyyy"
+                                                                secondaryPattern="ddMMyyyy"/>
+                                        </af:inputDate>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </af:group>
+        </f:facet>
+    </ied:page>
+</ui:composition>

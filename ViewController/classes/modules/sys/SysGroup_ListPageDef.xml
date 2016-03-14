@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="SysGroup_ListPageDef"
+                Package="modules.sys">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SB_SystemBean" id="SB_SystemBeanIterator"/>
+    <accessorIterator MasterBinding="SB_SystemBeanIterator" Binds="allUser" RangeSize="25" DataControl="SB_SystemBean"
+                      BeanClass="com.minhdt.model.entities.SysUser" id="allUserIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="allUserIterator" id="allUser">
+      <nodeDefinition DefName="com.minhdt.model.entities.SysUser" Name="allUser0">
+        <AttrNames>
+          <Item Value="userId"/>
+          <Item Value="status"/>
+          <Item Value="userImage"/>
+          <Item Value="userLevel"/>
+          <Item Value="gender"/>
+          <Item Value="userName"/>
+          <Item Value="fullName"/>
+          <Item Value="password"/>
+          <Item Value="createDate"/>
+          <Item Value="deleteDate"/>
+          <Item Value="check"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="index">
+    <page>/index.jsf</page>
+  </view>
+  <view id="SysGroup">
+    <page>/modules/sys/SysGroup.jsf</page>
+  </view>
+  <view id="login">
+    <page>/login.jsf</page>
+  </view>
+  <managed-bean id="__1">
+    <managed-bean-name>backing_modules_sys_SysGroup</managed-bean-name>
+    <managed-bean-class>com.minhdt.view.backing.modules.sys.SysGroup</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1modules/sys/SysGroup.jsf-->
+  </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>backing_login</managed-bean-name>
+    <managed-bean-class>com.minhdt.view.backing.Login</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1login.jsf-->
+  </managed-bean>
+</adfc-config>

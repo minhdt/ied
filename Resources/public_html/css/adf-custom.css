@@ -1,0 +1,166 @@
+.list-page-breadcrumb {
+    text-align: left !important;
+}
+
+.main-container {
+    padding-top: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+
+.page-header.filled {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 30px 30px 15px 30px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: #e4e9f0 !important;
+    background-image: none !important;
+    color: #444444 !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    font-family: 'Roboto', sans-serif !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+.widget-wrap-custom {
+    padding: 15px;
+}
+
+.widget-header-custom {
+    padding-bottom: 15px !important;
+    margin-left: 1px !important;
+    margin-right: 1px !important;
+}
+
+.btn-group-custom {
+    margin-top: 0px;
+}
+
+.af_link_text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+.af_inputText_content {
+    display: block !important;
+    width: 100% !important;
+    font-size: 14px !important;
+    line-height: 1.846 !important;
+    color: #555555 !important;
+    height: 39px !important;
+    padding: 6px 12px !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid #cccccc !important;
+    border-radius: 3px !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+}
+
+.af_inputText_content:focus {
+    border-color: #139c9b !important;
+    outline: 0 !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(19, 156, 155, 0.6) !important;
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(19, 156, 155, 0.6) !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(19, 156, 155, 0.6) !important;
+}
+
+.af_selectOneChoice_content {
+    display: block !important;
+    width: 100% !important;
+    height: 39px !important;
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+    line-height: 1.846 !important;
+    color: #555555 !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid #cccccc !important;
+    border-radius: 3px !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+}
+
+.af_selectOneChoice_content:focus {
+    border-color: #139c9b !important;
+    outline: 0 !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(19, 156, 155, 0.6) !important;
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(19, 156, 155, 0.6) !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(19, 156, 155, 0.6) !important;
+}
+
+.af_inputDate_content {
+    width: 100% !important;
+    height: 39px !important;
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+    line-height: 1.846 !important;
+    color: #555555 !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid #cccccc !important;
+    border-radius: 3px !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+}
+
+.af_inputDate_content:focus {
+    border-color: #139c9b !important;
+    outline: 0 !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(19, 156, 155, 0.6) !important;
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(19, 156, 155, 0.6) !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(19, 156, 155, 0.6) !important;
+}
+
+.list-view-tbody {
+    border: none !important;
+    padding: 0 !important;
+}
+
+.list-item-tbody {
+    border: none !important;
+    padding: 0 !important;
+}
+
+.link-icon {
+    color: #139c9b !important;
+    text-decoration: none !important;
+    padding: 0px 10px;
+    display: inline-block;
+    height: 25px;
+}
+
+a.link-btn {
+    color: #fff !important;
+}
+
+.smart-form {
+    padding: 20px 30px 25px 30px;
+}
+
+.login-form.af_inputText_content {
+    padding-left: 58px;
+    height: 50px !important;
+}
+
+.login-form > input {
+    padding-left: 58px !important;
+    height: 50px !important;
+}

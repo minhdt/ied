@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:componentDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" componentVar="comp" definition="private"
+                 xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component">
+    <af:xmlContent>
+        <afc:component>
+            <afc:description/>
+            <afc:display-name>page</afc:display-name>
+            <afc:facet>
+                <afc:facet-name>title</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:facet-name>content</afc:facet-name>
+            </afc:facet>
+            <afc:component-extension>
+                <afc:component-tag-namespace>com.ied.component</afc:component-tag-namespace>
+                <afc:component-taglib-uri>/ied/tag</afc:component-taglib-uri>
+            </afc:component-extension>
+        </afc:component>
+    </af:xmlContent>
+    
+    <div class="page-header filled full-block light">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-page-breadcrumb">
+                    <af:facetRef facetName="title" />
+                </ul>
+            </div>
+        </div>
+    </div>
+            
+    <div class="row">
+        <div class="col-md-12">
+            <af:facetRef facetName="content"/>
+        </div>
+    </div>
+</af:componentDef>

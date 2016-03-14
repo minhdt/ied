@@ -1,0 +1,50 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View3">
+      <property
+         name="activityId">index</property>
+      <property
+         name="page">/index.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>index&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">279.23438</property>
+      <property
+         name="x">201.5</property>
+   </View>
+   <View
+      id="View4">
+      <property
+         name="activityId">SysGroup</property>
+      <property
+         name="page">/modules/sys/SysGroup.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SysGroup&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">248.86719</property>
+      <property
+         name="x">373.0</property>
+   </View>
+   <View
+      id="View5">
+      <property
+         name="activityId">login</property>
+      <property
+         name="page">/login.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>login&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">430.8672</property>
+      <property
+         name="x">273.0</property>
+   </View>
+</SDM>

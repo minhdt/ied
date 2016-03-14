@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="index.jsf" id="d1" styleClass="leftbar-view" maximized="false">
+        <af:form id="f1">
+            <af:pageTemplate viewId="/template/IED_Template.jsf" id="pt1">
+                <f:facet name="main">
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>
