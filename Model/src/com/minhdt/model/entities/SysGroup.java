@@ -5,9 +5,13 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import java.util.ArrayList;
 import java.util.Date;
 
+import java.util.HashMap;
 import java.util.List;
+
+import java.util.Map;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -71,6 +75,9 @@ public class SysGroup implements Serializable {
     
     @Transient
     private boolean check;
+    
+    @Transient
+    private Map<Long, SysGroupFunction> mapFunction;
 
     public SysGroup() {
     }
@@ -140,6 +147,9 @@ public class SysGroup implements Serializable {
     }
 
     public List<SysGroupUser> getListSysGroupUser() {
+        if (listSysGroupUser == null) {
+            listSysGroupUser = new ArrayList<>();
+        }
         return listSysGroupUser;
     }
 
@@ -148,6 +158,9 @@ public class SysGroup implements Serializable {
     }
 
     public List<SysGroupFunction> getListSysGroupFunction() {
+        if (listSysGroupFunction == null) {
+            listSysGroupFunction = new ArrayList<>();
+        }
         return listSysGroupFunction;
     }
 
@@ -161,5 +174,20 @@ public class SysGroup implements Serializable {
 
     public void setCheck(boolean check) {
         this.check = check;
+    }
+
+
+    public Map<Long, SysGroupFunction> getMapFunction() {
+        if (mapFunction == null) {
+            mapFunction = new HashMap<>();
+            for (SysGroupFunction groupFunction : getListSysGroupFunction()) {
+                mapFunction.put(groupFunction.getSysFunction().getFunctionId(), groupFunction);
+            }
+        }
+        return mapFunction;
+    }
+
+    public void setMapFunction(Map<Long, SysGroupFunction> mapFunction) {
+        this.mapFunction = mapFunction;
     }
 }

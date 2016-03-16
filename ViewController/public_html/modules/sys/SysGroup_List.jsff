@@ -27,18 +27,27 @@
                                     <li>
                                         <af:link id="lbtSearch" styleClass="clear-filter btn btn-link link-icon"
                                                  partialSubmit="true" text="Tìm kiếm"
-                                                 actionListener="#{pageFlowScope.backing_modules_sys_SysGroup_List.lbtSearch_Action}"/>
+                                                 actionListener="#{viewScope.backing_modules_sys_SysGroup_List.lbtSearch_Action}"/>
                                     </li>
                                     <li>
-                                        <af:link id="lbtExport" styleClass="btn btn-info link-btn" text="Kết xuất"/>
+                                        <af:link id="lbtAdd" styleClass="btn btn-primary link-btn" text="Thêm"
+                                                 action="#{viewScope.backing_modules_sys_SysGroup_List.lbtAdd_Action}"/>
                                     </li>
                                     <li>
-                                        <af:link id="lbtAdd" styleClass="btn btn-primary link-btn" text="Thêm mới"
-                                                 action="#{pageFlowScope.backing_modules_sys_SysGroup_List.lbtAdd_Action}"/>
+                                        <af:link id="lbtEdit" styleClass="btn btn-primary link-btn" text="Sửa"
+                                                 action="#{viewScope.backing_modules_sys_SysGroup_List.lbtEdit_Action}"/>
+                                    </li>
+                                    <li>
+                                        <af:link id="lbtDelete" styleClass="btn btn-primary link-btn"
+                                                 partialSubmit="true" text="Xoá"
+                                                 actionListener="#{viewScope.backing_modules_sys_SysGroup_List.lbtDelete_Action}">
+                                            <af:serverListener type="handleConfirmDelete"
+                                                               method="#{viewScope.backing_modules_sys_SysGroup_List.handleConfirmDelete_action}"/>
+                                        </af:link>
                                     </li>
                                     <li class="widget-toggle">
-                                        <af:link id="lbtHide" partialSubmit="true" inlineStyle="width: 39px; height:39px;"
-                                                 styleClass="btn btn-default"
+                                        <af:link id="lbtHide" partialSubmit="true"
+                                                 inlineStyle="width: 39px; height:39px;" styleClass="btn btn-default"
                                                  shortDesc="Ẩn/hiện tìm kiếm">
                                             <i class="zmdi zmdi-chevron-down"></i>
                                         </af:link>
@@ -51,27 +60,38 @@
                         <div class="widget-content">
                             <div class="table-filter-header">
                                 <div class="row">
-                                    <div class="col-md-4 col-sm-4">
+                                    <div class="col-md-3 col-sm-3">
                                         <span class="tfh-label">Tên nhóm quyền: </span>
                                          
-                                        <af:inputText id="txtName" simple="true" autoSubmit="true"/>
+                                        <af:inputText id="txtName" simple="true" autoSubmit="true"
+                                                      binding="#{viewScope.backing_modules_sys_SysGroup_List.txtName}"/>
                                     </div>
-                                    <div class="col-md-4 col-sm-4">
+                                    <div class="col-md-3 col-sm-3">
                                         <span class="tfh-label">Tình trạng: </span>
                                          
-                                        <af:selectOneChoice id="socStatus" simple="true" autoSubmit="true">
-                                            <af:selectItem label="Active" value="All"/>
-                                            <af:selectItem label="Disabled" value="All"/>
-                                            <af:selectItem label="Suspended" value="All"/>
+                                        <af:selectOneChoice id="socStatus" simple="true" autoSubmit="true" value="ALL"
+                                                            binding="#{viewScope.backing_modules_sys_SysGroup_List.socStatus}">
+                                            <af:selectItem label="Tất cả" value="ALL"/>
+                                            <f:selectItems value="#{viewScope.backing_modules_sys_SysGroup_List.listStatusItem}"/>
                                         </af:selectOneChoice>
                                     </div>
-                                    <div class="col-md-4 col-sm-4">
+                                    <div class="col-md-6 col-sm-6">
                                         <span class="tfh-label">Ngày tạo: </span>
                                          
-                                        <af:inputDate id="ipdCreateDate" simple="true" autoSubmit="true">
-                                            <af:convertDateTime dateStyle="short" pattern="dd/MM/yyyy"
-                                                                secondaryPattern="ddMMyyyy"/>
-                                        </af:inputDate>
+                                        <af:panelGroupLayout layout="horizontal" styleClass="AFStretchWidth">
+                                            <af:inputDate id="ipdCreateDateFrom" simple="true" autoSubmit="true"
+                                                          binding="#{viewScope.backing_modules_sys_SysGroup_List.ipdCreateDateFrom}">
+                                                <af:convertDateTime dateStyle="short" pattern="dd/MM/yyyy"
+                                                                    secondaryPattern="ddMMyyyy"/>
+                                            </af:inputDate>
+                                            <af:outputText escape="false"
+                                                           value="&lt;label class='col-md-1 col-sm-1 col-xs-1'>-&lt;/label>"/>
+                                            <af:inputDate id="ipdCreateDateTo" simple="true" autoSubmit="true"
+                                                          binding="#{viewScope.backing_modules_sys_SysGroup_List.ipdCreateDateTo}">
+                                                <af:convertDateTime dateStyle="short" pattern="dd/MM/yyyy"
+                                                                    secondaryPattern="ddMMyyyy"/>
+                                            </af:inputDate>
+                                        </af:panelGroupLayout>
                                     </div>
                                 </div>
                             </div>
@@ -79,56 +99,67 @@
                     </div>
                     <div class="widget-container margin-top-0">
                         <div class="widget-content">
-                            <af:panelGroupLayout partialTriggers="lbtSearch">
-                                <table class="table foo-data-table footable-loaded footable">
+                            <af:panelGroupLayout partialTriggers="lbtSearch lbtDelete">
+                                <table class="table foo-data-table">
                                     <thead>
                                         <tr>
+                                            <th data-sort-ignore="true" style="width: 80px;"></th>
                                             <th data-sort-ignore="true" style="width: 80px;">STT</th>
-                                            <th style="width: 300px;">Tên nhóm quyền</th>
+                                            <th data-sort-ignore="true" style="width: 300px;">Tên nhóm quyền</th>
                                             <th data-sort-ignore="true">Mô tả</th>
-                                            <th style="width: 120px;">Ngày tạo</th>
-                                            <th style="width: 120px;">Tình trạng</th>
-                                            <th data-sort-ignore="true" style="width: 120px;"></th>
+                                            <th data-sort-ignore="true" style="width: 120px;">Ngày tạo</th>
+                                            <th data-sort-ignore="true" style="width: 120px;">Tình trạng</th>
                                         </tr>
                                     </thead>
-                                    
+                                     
                                     <tbody id="sysGroupData">
-                                        <af:forEach items="#{pageFlowScope.backing_modules_sys_SysGroup_List.demoData}"
+                                        <af:forEach items="#{viewScope.backing_modules_sys_SysGroup_List.listGroup}"
                                                     var="row" varStatus="vs">
-                                            <tr class="#{vs.index % 2 eq 0 ? 'footable-even' : 'footable-odd'}" style="display: table-row;">
-                                                <td class="footable-visible footable-first-column">
+                                            <tr class="#{vs.index % 2 eq 0 ? 'footable-even' : 'footable-odd'}"
+                                                style="display: table-row;">
+                                                <td class="td-center">
+                                                    <af:selectBooleanCheckbox simple="true" autoSubmit="true"
+                                                                              value="#{row.check}"/>
+                                                </td>
+                                                <td>
                                                     <af:outputText value="#{vs.index + 1}"/>
                                                 </td>
-                                                <td class="footable-visible">
-                                                    <af:outputText value="#{row[0]}"/>
+                                                <td>
+                                                    <af:outputText value="#{row.groupName}"/>
                                                 </td>
-                                                <td class="footable-visible">
-                                                    <af:outputText value="#{row[1]}"/>
+                                                <td>
+                                                    <af:outputText value="#{row.description}"/>
                                                 </td>
-                                                <td class="footable-visible">
-                                                    <af:outputText value="#{row[2]}"/>
+                                                <td>
+                                                    <af:outputText value="#{row.createDate}">
+                                                        <af:convertDateTime pattern="dd/MM/yyyy"/>
+                                                    </af:outputText>
                                                 </td>
-                                                <td class="footable-visible">
-                                                    <span class="label label-#{row[3] eq 1 ? 'success' : row[3] eq 0 ? 'default' : 'danger'}"
-                                                          title="#{row[3] eq 1 ? 'active' : row[3] eq 0 ? 'disabled' : 'suspended'}">
-                                                        <af:outputText value="#{row[3] eq 1 ? 'Hoạt động' : row[3] eq 0 ? 'Tạm dừng' : 'Đã xoá'}"/></span>
+                                                <td>
+                                                    <span class="label label-#{row.status eq 1 ? 'success' : row.status eq 0 ? 'default' : 'danger'}">
+                                                        <af:outputText value="#{viewScope.backing_modules_sys_SysGroup_List.mapStatusItem[row.status]}"/></span>
                                                 </td>
-                                                <td class="td-center footable-visible footable-last-column">
+                                                <!--<td class="td-center">
                                                     <af:link id="lbtEdit" styleClass="link-icon" partialSubmit="true"
-                                                             actionListener="#{pageFlowScope.backing_modules_sys_SysGroup_List.lbtEdit_Action}"
-                                                             action="#{pageFlowScope.backing_modules_sys_SysGroup_List.lbtEdit_Action}">
+                                                             visible="#{row.status eq 1 or row.status eq 0}"
+                                                             action="#{viewScope.backing_modules_sys_SysGroup_List.lbtEdit_Action}">
                                                         <span class="zmdi zmdi-edit" style=" font-size: 16px;"></span>
-                                                        <af:clientAttribute name="SelectedRowData" value="#{row}"/>
+                                                        <af:setPropertyListener from="#{row}"
+                                                                                to="#{viewScope.backing_modules_sys_SysGroup_List.current}"
+                                                                                type="action"/>
                                                     </af:link>
                                                      
-                                                    <af:link id="lbtDelete" styleClass="link-icon" partialSubmit="true"
-                                                             actionListener="#{pageFlowScope.backing_modules_sys_SysGroup_List.lbtDelete_Action}">
+                                                    <af:link id="lbtDelete" styleClass="link-icon" partialSubmit="true" clientComponent="true" immediate="true"
+                                                             visible="#{row.status eq 1 or row.status eq 0}"
+                                                             action="#{viewScope.backing_modules_sys_SysGroup_List.lbtDelete_Action}">
                                                         <span class="zmdi zmdi-close" style=" font-size: 20px;"></span>
-                                                        <af:clientAttribute name="SelectedRowData" value="#{row}"/>
+                                                        <af:setPropertyListener from="#{row}"
+                                                                                to="#{viewScope.backing_modules_sys_SysGroup_List.current}"
+                                                                                type="action"/>
                                                         <af:serverListener type="handleConfirmDelete"
-                                                                           method="#{pageFlowScope.backing_modules_sys_SysGroup_List.handleConfirmDelete_action}"/>
+                                                                           method="#{viewScope.backing_modules_sys_SysGroup_List.handleConfirmDelete_action}"/>
                                                     </af:link>
-                                                </td>
+                                                </td>-->
                                             </tr>
                                         </af:forEach>
                                     </tbody>

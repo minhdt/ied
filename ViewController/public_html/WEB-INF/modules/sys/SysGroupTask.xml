@@ -8,7 +8,7 @@
     <managed-bean id="__1">
       <managed-bean-name>backing_modules_sys_SysGroup_List</managed-bean-name>
       <managed-bean-class>com.minhdt.view.backing.modules.sys.SysGroup_List</managed-bean-class>
-      <managed-bean-scope>pageFlow</managed-bean-scope>
+      <managed-bean-scope>view</managed-bean-scope>
       <!--oracle-jdev-comment:managed-bean-jsp-link:1modules/sys/SysGroup_List.jsff-->
     </managed-bean>
     <managed-bean id="__9">

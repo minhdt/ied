@@ -44,10 +44,8 @@ public class Login {
             } else {
                     String password = Security.md5(getTxtUserName().toUpperCase() + getTxtPassword().toString());
                     
-                     System.out.println("pass: " + password);
-                
                     Map<String, Object> filters = new HashMap<>();
-                    String[] nameFilter = {"EQUAL", getTxtUserName().toUpperCase() };
+                    String[] nameFilter = {"EQUAL", getTxtUserName()};
                     filters.put("userName", nameFilter);
                     
                     String[] passFilter = {"EQUAL", password};

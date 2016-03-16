@@ -70,7 +70,6 @@ public class Message {
         StringBuilder script = new StringBuilder();
         
         script.append("var control = AdfPage.PAGE.findComponent('" + controlId + "'); ");
-        
         script.append("swal({");
         script.append("    title: '" + title + "',");
         script.append("    text: '" + content + "',");
@@ -78,12 +77,14 @@ public class Message {
         script.append("    showCancelButton: true,");
         script.append("    confirmButtonColor: '#DD6B55',");
         script.append("    confirmButtonText: 'Đồng ý',");
-        script.append("    cancelButtonText: 'Không',");
-        script.append("}, function () {");
-        script.append("    AdfCustomEvent.queue(control,");
-        script.append("                        '" + serverListenerType + "',");
-        script.append("                        {},");
-        script.append("                        false);");
+        script.append("    cancelButtonText: 'Không'");
+        script.append("}, function (isConfirm) {");
+        script.append("    if (isConfirm) {");
+        script.append("        AdfCustomEvent.queue(control,");
+        script.append("                             '" + serverListenerType + "',");
+        script.append("                             {},");
+        script.append("                             false);");
+        script.append("    } ");
         script.append("});");
 
         ExtendedRenderKitService erks =

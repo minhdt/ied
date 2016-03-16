@@ -2,8 +2,11 @@ package com.minhdt.model.entities;
 
 import java.io.Serializable;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import java.util.Map;
 import java.util.Objects;
 
 import javax.persistence.Basic;
@@ -50,6 +53,8 @@ public class SysFunction implements Serializable {
     
     private String path;
     
+    private Integer status;
+    
     @ManyToMany(targetEntity = SysTask.class)
     @JoinTable(name = "SYS_FUNCTION_TASK", joinColumns = @JoinColumn(name = "FUNCTION_ID"),
                inverseJoinColumns = @JoinColumn(name = "ROLE_CODE"))
@@ -64,6 +69,9 @@ public class SysFunction implements Serializable {
     
     @Transient
     private boolean check;
+    
+    @Transient
+    private Map<String, Boolean> mapTask;
 
     public SysFunction() {
     }
@@ -164,11 +172,36 @@ public class SysFunction implements Serializable {
     }
 
     public List<SysTask> getListTask() {
+        if (listTask == null) {
+            listTask = new ArrayList<>();
+        }
         return listTask;
     }
 
     public void setListTask(List<SysTask> listTask) {
         this.listTask = listTask;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Map<String, Boolean> getMapTask() {
+        if (mapTask == null) {
+            mapTask = new HashMap<>();
+            for (SysTask task : getListTask()) {
+                mapTask.put(task.getRoleCode(), new Boolean(false));
+            }
+        }
+        return mapTask;
+    }
+
+    public void setMapTask(Map<String, Boolean> mapTask) {
+        this.mapTask = mapTask;
     }
 
     public boolean isCheck() {

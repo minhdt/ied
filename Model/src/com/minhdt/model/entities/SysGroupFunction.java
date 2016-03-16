@@ -2,8 +2,11 @@ package com.minhdt.model.entities;
 
 import java.io.Serializable;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import java.util.Map;
 import java.util.Objects;
 
 import javax.persistence.Basic;
@@ -18,6 +21,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * To create ID generator sequence "SYS_GROUP_FUNCTION_SEQ":
@@ -47,6 +51,9 @@ public class SysGroupFunction implements Serializable {
     @JoinTable(name = "SYS_GROUP_FUNCTION_TASK", joinColumns = @JoinColumn(name = "GROUP_FUNCTION_ID"),
                inverseJoinColumns = @JoinColumn(name = "ROLE_CODE"))
     private List<SysTask> listTask;
+    
+    @Transient
+    private Map<String, Boolean> mapTask;
 
     public SysGroupFunction() {
     }
@@ -98,10 +105,27 @@ public class SysGroupFunction implements Serializable {
     }
 
     public List<SysTask> getListTask() {
+        if (listTask == null) {
+            listTask = new ArrayList<>();
+        }
         return listTask;
     }
 
     public void setListTask(List<SysTask> listTask) {
         this.listTask = listTask;
+    }
+
+    public Map<String, Boolean> getMapTask() {
+        if (mapTask == null) {
+            mapTask = new HashMap<>();
+            for (SysTask task : getListTask()) {
+                mapTask.put(task.getRoleCode(), new Boolean(true));
+            }
+        }
+        return mapTask;
+    }
+
+    public void setMapTask(Map<String, Boolean> mapTask) {
+        this.mapTask = mapTask;
     }
 }

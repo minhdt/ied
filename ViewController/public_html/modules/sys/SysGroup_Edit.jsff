@@ -1,4 +1,129 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:ied="/ied/tag">
     <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_modules_sys_SysGroup_Edit-->
+    <ied:page>
+        <f:facet name="title">
+            <af:group>
+                <li>
+                    <af:link action="back" text="Quản lý nhóm quyền" inlineStyle="color: #444444;">
+                        <i class="zmdi zmdi-chevron-right"></i>
+                    </af:link>
+                </li>
+                <li class="active-page">Chỉnh sửa</li>
+            </af:group>
+        </f:facet>
+        <f:facet name="content">
+            <af:group>
+                <div class="widget-wrap material-table-widget widget-wrap-custom">
+                    <div class="widget-header block-header margin-bottom-0 clearfix widget-header-custom">
+                        <div class="pull-left">
+                            <h3>Nhóm quyền</h3>
+                            <p>Chỉnh sửa nhóm quyền</p>
+                        </div>
+                    </div>
+                    <div class="widget-container margin-top-0">
+                        <div class="widget-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-content smart-form">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4">
+                                                <span class="tfh-label">Tên nhóm quyền: </span>
+                                                 
+                                                <af:inputText id="txtName" simple="true" autoSubmit="true"
+                                                              disabled="#{viewScope.backing_modules_sys_SysGroup_Edit.current.status eq -1}"
+                                                              value="#{viewScope.backing_modules_sys_SysGroup_Edit.current.groupName}"/>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <span class="tfh-label">Mô tả: </span>
+                                                 
+                                                <af:inputText id="txtDescription" simple="true" autoSubmit="true"
+                                                              disabled="#{viewScope.backing_modules_sys_SysGroup_Edit.current.status eq -1}"
+                                                              value="#{viewScope.backing_modules_sys_SysGroup_Edit.current.description}"/>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <span class="tfh-label">Tình trạng: </span>
+                                                 
+                                                <af:selectOneChoice id="socStatus" simple="true" autoSubmit="true"
+                                                                    disabled="#{viewScope.backing_modules_sys_SysGroup_Edit.current.status eq -1}"
+                                                                    value="#{viewScope.backing_modules_sys_SysGroup_Edit.current.status}">
+                                                    <f:selectItems value="#{viewScope.backing_modules_sys_SysGroup_Edit.listStatusItem}"/>
+                                                </af:selectOneChoice>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <span class="tfh-label">Danh sách chức năng: </span>
+                                                <hr/>
+                                                <af:forEach  var="item" varStatus="vs"
+                                                             items="#{viewScope.backing_modules_sys_SysGroup_Edit.listFunction}">
+                                                    <div class="col-md-12 col-sm-12">
+                                                        <label>
+                                                            <af:selectBooleanCheckbox simple="true"
+                                                                                      inlineStyle="padding-right: 10px;"
+                                                                                      autoSubmit="true" value="#{item.check}"
+                                                                                      disabled="#{viewScope.backing_modules_sys_SysGroup_Edit.current.status eq -1}">
+                                                                <af:clientListener type="valueChange" method="SelectFunction"/>
+                                                            </af:selectBooleanCheckbox>
+                                                            <af:outputText value="#{item.functionName}"/>
+                                                        </label>
+                                                        <div class="row" style="padding-left: 40px;">
+                                                            <af:forEach items="#{item.listTask}" var="node" varStatus="nodeVS">
+                                                                <div class="col-md-2 col-sm-4 col-xs-6">
+                                                                <label>
+                                                                    <af:selectBooleanCheckbox simple="true" autoSubmit="true"
+                                                                                              inlineStyle="padding-right: 10px;"
+                                                                                              value="#{item.mapTask[node.roleCode]}"
+                                                                                              disabled="#{viewScope.backing_modules_sys_SysGroup_Edit.current.status eq -1}"/>
+                                                                    <af:outputText value="#{node.roleName}"/>
+                                                                </label>
+                                                                </div>
+                                                            </af:forEach>
+                                                        </div>
+                                                    </div>
+                                                </af:forEach>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-footer pull-right" style="padding-right:30px;">
+                                        <div class="tbl-action-toolbar">
+                                            <ul>
+                                                <li>
+                                                    <af:link id="lbtCancel" styleClass="btn btn-danger link-btn" partialSubmit="true" text="Quay lại"
+                                                             action="back"/>
+                                                </li>
+                                                <li>
+                                                    <af:link id="lbtEdit" styleClass="btn btn-primary link-btn" partialSubmit="true" text="Chỉnh sửa"
+                                                             visible="#{not (viewScope.backing_modules_sys_SysGroup_Edit.current.status eq -1)}"
+                                                             action="#{viewScope.backing_modules_sys_SysGroup_Edit.lbtEdit_Action}"/>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <af:resource type="javascript">
+                    function SelectFunction(evt) {
+                        var source = evt.getSource();
+                        var id = "pt1:r1:0:j_id131330398_7c1265fb:" + source.getId();
+                        var listTask = document.getElementById(id).parentNode.parentNode.getElementsByTagName('div');
+                        for (var i = 0, len =listTask.length; i &lt; len; i++){
+                            var item = listTask[i].getElementsByTagName('label')[0]
+                                                  .getElementsByTagName('span')[0]
+                                                  .getElementsByTagName('span')[0]
+                                                  .getElementsByTagName('span')[0]
+                                                  .getElementsByTagName('input')[0];
+                            item.checked = source.getValue();
+                        }
+                    }
+                </af:resource>
+            </af:group>
+        </f:facet>
+    </ied:page>
 </ui:composition>
