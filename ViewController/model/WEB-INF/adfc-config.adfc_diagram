@@ -20,15 +20,15 @@
    <View
       id="View4">
       <property
-         name="activityId">SysGroup</property>
+         name="activityId">SysGroup_Manage</property>
       <property
-         name="page">/modules/sys/SysGroup.jsf</property>
+         name="page">/modules/sys/SysGroup_Manage.jsf</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>SysGroup&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>SysGroup_Manage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">248.86719</property>
+         name="y">248.66797</property>
       <property
          name="x">373.0</property>
    </View>
@@ -46,5 +46,20 @@
          name="y">430.8672</property>
       <property
          name="x">273.0</property>
+   </View>
+   <View
+      id="View6">
+      <property
+         name="activityId">SysUser_Manage</property>
+      <property
+         name="page">/modules/sys/SysUser_Manage.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SysUser_Manage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">267.66797</property>
+      <property
+         name="x">526.0</property>
    </View>
 </SDM>

@@ -98,7 +98,6 @@ public class SysGroup_List {
     public void lbtSearch_Action(ActionEvent evt) {
         try {
             setListGroup(resetModel());
-            AppUtils.refreshControl(getPglTable());
         } catch (Exception e) {
             e.printStackTrace();
         }

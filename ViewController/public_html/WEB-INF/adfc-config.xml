@@ -3,22 +3,31 @@
   <view id="index">
     <page>/index.jsf</page>
   </view>
-  <view id="SysGroup">
-    <page>/modules/sys/SysGroup.jsf</page>
+  <view id="SysGroup_Manage">
+    <page>/modules/sys/SysGroup_Manage.jsf</page>
   </view>
   <view id="login">
     <page>/login.jsf</page>
   </view>
+  <view id="SysUser_Manage">
+    <page>/modules/sys/SysUser_Manage.jsf</page>
+  </view>
   <managed-bean id="__1">
     <managed-bean-name>backing_modules_sys_SysGroup</managed-bean-name>
-    <managed-bean-class>com.minhdt.view.backing.modules.sys.SysGroup</managed-bean-class>
+    <managed-bean-class>com.minhdt.view.backing.modules.sys.SysGroup_Manage</managed-bean-class>
     <managed-bean-scope>backingBean</managed-bean-scope>
-    <!--oracle-jdev-comment:managed-bean-jsp-link:1modules/sys/SysGroup.jsf-->
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1modules/sys/SysGroup_Manage.jsf-->
   </managed-bean>
   <managed-bean id="__2">
     <managed-bean-name>backing_login</managed-bean-name>
     <managed-bean-class>com.minhdt.view.backing.Login</managed-bean-class>
     <managed-bean-scope>view</managed-bean-scope>
     <!--oracle-jdev-comment:managed-bean-jsp-link:1login.jsf-->
+  </managed-bean>
+  <managed-bean id="__3">
+    <managed-bean-name>backing_modules_sys_SysUser_Manage</managed-bean-name>
+    <managed-bean-class>com.minhdt.view.backing.modules.sys.SysUser_Manage</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1modules/sys/SysUser_Manage.jsf-->
   </managed-bean>
 </adfc-config>

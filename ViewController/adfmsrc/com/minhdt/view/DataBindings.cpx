@@ -7,14 +7,16 @@
     <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
   </definitionFactories>
   <pageMap>
-    <page path="/modules/sys/SysGroup.jsf" usageId="com_minhdt_view_SysGroupPageDef"/>
+    <page path="/modules/sys/SysGroup_Manage.jsf" usageId="com_minhdt_view_SysGroupPageDef"/>
     <page path="/modules/sys/SysGroup_List.jsff" usageId="com_minhdt_view_SysGroup_ListPageDef"/>
     <page path="/login.jsf" usageId="com_minhdt_view_loginPageDef"/>
+    <page path="/modules/sys/SysUser_Manage.jsf" usageId="com_minhdt_view_SysUser_ManagePageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_minhdt_view_SysGroupPageDef" path="modules.sys.SysGroupPageDef"/>
     <page id="com_minhdt_view_SysGroup_ListPageDef" path="modules.sys.SysGroup_ListPageDef"/>
     <page id="com_minhdt_view_loginPageDef" path="com.minhdt.view.pageDefs.loginPageDef"/>
+    <page id="com_minhdt_view_SysUser_ManagePageDef" path="modules.sys.SysUser_ManagePageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="SB_SystemBean" path="com.minhdt.SB_SystemBean"/>

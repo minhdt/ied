@@ -80,7 +80,8 @@
                                 <!-- end keep logged -->
                             </div>
                             <div class="login-form-footer">
-                                <af:link id="lbtLogin" partialSubmit="true" styleClass="btn-block btn btn-primary"
+                                <af:link id="lbtLogin" partialSubmit="true" styleClass="btn-block btn btn-primary link-btn"
+                                         inlineStyle="font: 20px;"
                                          action="#{viewScope.backing_login.lbtLogin_Action}">Đăng nhập</af:link>
                             </div>
                         </af:form>

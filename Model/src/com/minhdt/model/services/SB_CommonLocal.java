@@ -3,6 +3,8 @@ package com.minhdt.model.services;
 import com.minhdt.model.entities.SysParam;
 import com.minhdt.model.entities.SysTask;
 
+import com.minhdt.model.services.common.FilterModel;
+
 import java.sql.SQLException;
 
 import java.util.List;
@@ -25,8 +27,13 @@ public interface SB_CommonLocal {
     <T> List<T> getAllBase(Class<T> entity, Map<String, Object> filters, Map<String, Object> orders, int start,
                            int range);
 
+    <T> List<T> getAllBase(Class<T> entity, List<FilterModel> filters, Map<String, Object> orders, int start,
+                           int range);
+
     <T> List<T> getAllBase(Class<T> entity, Map<String, Object> filters, Map<String, Object> orders);
-    
+
+    <T> List<T> getAllBase(Class<T> entity, List<FilterModel> filters, Map<String, Object> orders);
+
     <T> T getSingleBase(Class<T> entity, Map<String, Object> filters);
 
     <T> void persistListEntity(List<T> listEntity);

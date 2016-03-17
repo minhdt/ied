@@ -17,14 +17,16 @@
       <property
          name="y">284.80078</property>
       <property
-         name="x">280.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">280.0</property>
    </View>
    <View
       id="View3">
       <property
          name="activityId">SysUser_Add</property>
+      <property
+         name="page">/modules/sys/SysUser_Add.jsff</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>SysUser_Add&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
@@ -32,14 +34,16 @@
       <property
          name="y">286.66797</property>
       <property
-         name="x">489.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">489.0</property>
    </View>
    <View
       id="View4">
       <property
          name="activityId">SysUser_Edit</property>
+      <property
+         name="page">/modules/sys/SysUser_Edit.jsff</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>SysUser_Edit&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
@@ -47,9 +51,9 @@
       <property
          name="y">103.734375</property>
       <property
-         name="x">349.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">349.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -59,7 +63,7 @@
       <property
          name="fromOutcome">add</property>
       <property
-         name="sdm:polyPoints">R50,321.0,284.73438,448.0,286.60156,L50</property>
+         name="sdm:polyPoints">R46,321.05145,281.23438,448.0,283.10156,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -79,7 +83,7 @@
       <property
          name="fromOutcome">edit</property>
       <property
-         name="sdm:polyPoints">T50,280.0,230.73438,349.0,157.66797,B50</property>
+         name="sdm:polyPoints">T44,276.5,227.95154,345.5,157.66797,B44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

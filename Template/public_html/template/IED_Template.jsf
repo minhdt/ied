@@ -59,10 +59,13 @@
                     <div class="admin-user-info">
                         <ul>
                             <li>
-                                <a href="#">Kamrujaman Shohel</a>
+                                <af:link id="lkUser" partialSubmit="true" styleClass="link-btn"
+                                         text="#{sessionScope.userInfoSession.user.fullName}"/>
                             </li>
                             <li>
-                                <a href="#">Info@jaman.me</a>
+                                <af:link id="lkUserInfo" partialSubmit="true" styleClass="link-btn"
+                                         disabled="true"
+                                         text="#{sessionScope.userInfoSession.user.userName}"/>
                             </li>
                         </ul>
                     </div>
@@ -89,18 +92,36 @@
                 </div>
             </div>
             <ul class="list-accordion">
-                <li class="list-title">Layouts</li>
+                <li class="list-title">Hệ thống</li>
+                <li>
+                    <a href="#{request.contextPath}/faces/SysGroup_Manage">
+                        <i class="zmdi zmdi-case-check"></i><span class="list-label">Nhóm quyền</span></a>
+                </li>
+                <li>
+                    <a href="#{request.contextPath}/faces/SysUser_Manage">
+                        <i class="zmdi zmdi-accounts"></i><span class="list-label">Người dùng</span></a>
+                </li>
                 <li>
                     <a href="#">
-                        <i class="zmdi zmdi-view-dashboard"></i><span class="list-label">Layouts Variations</span></a>
-                    <ul>
-                        <li>
-                            <a href="#">Boxed Layout</a>
-                        </li>
-                        <li>
-                            <a href="#">Iconic Leftbar</a>
-                        </li>
-                    </ul>
+                        <i class="zmdi zmdi-settings"></i><span class="list-label">Cấu hình</span></a>
+                </li>
+                <li class="list-title">Danh mục</li>
+                <li>
+                    <a href="#">
+                        <i class="zmdi zmdi-tv-list"></i><span class="list-label">Thiết bị</span></a>
+                </li>
+                <li class="list-title">Nghiệp vụ</li>
+                <li>
+                    <a href="#">
+                        <i class="zmdi zmdi-layers"></i><span class="list-label">Công đoạn</span></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="zmdi zmdi-group-work"></i><span class="list-label">Nhóm công đoạn</span></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="zmdi zmdi-assignment"></i><span class="list-label">Đơn hàng</span></a>
                 </li>
             </ul>
         </div>

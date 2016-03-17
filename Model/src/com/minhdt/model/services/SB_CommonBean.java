@@ -3,6 +3,9 @@ package com.minhdt.model.services;
 import com.minhdt.model.entities.SysParam;
 import com.minhdt.model.entities.SysTask;
 
+import com.minhdt.model.services.common.ExpressionFilter;
+import com.minhdt.model.services.common.FilterModel;
+
 import java.lang.reflect.Field;
 
 import java.sql.CallableStatement;
@@ -119,7 +122,40 @@ public class SB_CommonBean implements SB_CommonLocal {
 
         return q.getResultList();
     }
-    
+
+    @Override
+    public <T> List<T> getAllBase(Class<T> entity, List<FilterModel> filters, Map<String, Object> orders, int start,
+                                  int range) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<T> cq = cb.createQuery(entity);
+        Root<T> root = cq.from(entity);
+        cq.select(root);
+        cq.distinct(true);
+
+        List<Predicate> predicates = buildConditions(filters, root, cb);
+
+        if (predicates != null && !predicates.isEmpty()) {
+            cq.where(predicates.toArray(new Predicate[] { }));
+        }
+
+        List<Order> listOrder = buildOrderBy(orders, cb, root);
+
+        if (listOrder != null && !listOrder.isEmpty()) {
+            cq.orderBy(listOrder.toArray(new Order[] { }));
+        }
+
+        TypedQuery<T> q = em.createQuery(cq);
+
+        if (start > 0) {
+            q.setFirstResult(start);
+        }
+        if (range > 0) {
+            q.setMaxResults(range);
+        }
+
+        return q.getResultList();
+    }
+
     @Override
     public <T> T getSingleBase(Class<T> entity, Map<String, Object> filters) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -136,11 +172,11 @@ public class SB_CommonBean implements SB_CommonLocal {
 
         TypedQuery<T> q = em.createQuery(cq);
         q.setMaxResults(1);
-        
+
         try {
             return q.getSingleResult();
         } catch (Exception e) {
-            
+
         }
 
         return null;
@@ -148,6 +184,11 @@ public class SB_CommonBean implements SB_CommonLocal {
 
     @Override
     public <T> List<T> getAllBase(Class<T> entity, Map<String, Object> filters, Map<String, Object> orders) {
+        return getAllBase(entity, filters, orders, 0, 0);
+    }
+
+    @Override
+    public <T> List<T> getAllBase(Class<T> entity, List<FilterModel> filters, Map<String, Object> orders) {
         return getAllBase(entity, filters, orders, 0, 0);
     }
 
@@ -223,6 +264,65 @@ public class SB_CommonBean implements SB_CommonLocal {
         } else {
             Expression<?> field = root.get(entry.getKey());
             return cb.equal(field, entry.getValue());
+        }
+    }
+
+    protected <T> List<Predicate> buildConditions(List<FilterModel> filters, Root<T> root, CriteriaBuilder cb) {
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (filters != null) {
+            for (FilterModel entry : filters) {
+                Predicate predicate = buildCondition(entry, root, cb);
+                if (predicate != null) {
+                    predicates.add(predicate);
+                }
+            }
+        }
+
+        return predicates;
+    }
+
+    protected <T> Predicate buildCondition(FilterModel entry, Root<T> root, CriteriaBuilder cb) {
+        if (entry.getCondition() instanceof List) {
+            Expression<?> field = root.get(entry.getColumn());
+            if (ExpressionFilter.NOT_IN.equals(entry.getExpression())) {
+                return cb.not(field.in((List<?>) entry.getCondition()));
+            } else {
+                return field.in((List<?>) entry.getCondition());
+            }
+        } else if (entry.getCondition() instanceof Date[]) {
+            Date[] condition = (Date[]) entry.getCondition();
+            Expression<Date> field = root.get(entry.getColumn());
+            Predicate clause = null;
+            Predicate clauseStart = null;
+
+            if (condition[0] != null && condition[1] != null) {
+                clause =
+                    cb.and(cb.greaterThanOrEqualTo(field, condition[0]), cb.lessThanOrEqualTo(field, condition[1]));
+            } else if (condition[0] != null) {
+                clause = cb.greaterThanOrEqualTo(field, condition[0]);
+            } else if (condition[1] != null) {
+                clause = cb.lessThanOrEqualTo(field, condition[1]);
+            }
+            return clause;
+        } else if (entry.getCondition() instanceof String) {
+            Expression<String> field = root.get(entry.getColumn());
+            if (ExpressionFilter.EQUAL.equals(entry.getExpression())) {
+                return cb.equal(field, entry.getCondition());
+            } else if (ExpressionFilter.NOT_EQUAL.equals(entry.getExpression())) {
+                return cb.notEqual(field, entry.getCondition());
+            } else if (ExpressionFilter.NOT_LIKE.equals(entry.getExpression())) {
+                return cb.notLike(cb.upper(field), entry.getCondition().toString().trim().toUpperCase());
+            } else {
+                return cb.like(cb.upper(field), entry.getCondition().toString().trim().toUpperCase());
+            }
+        } else {
+            Expression<?> field = root.get(entry.getColumn());
+            if (ExpressionFilter.NOT_EQUAL.equals(entry.getExpression())) {
+                return cb.notEqual(field, entry.getCondition());
+            } else {
+                return cb.equal(field, entry.getCondition());
+            }
         }
     }
 

@@ -8,14 +8,30 @@
     <managed-bean id="__8">
       <managed-bean-name>backing_modules_sys_SysUser_List</managed-bean-name>
       <managed-bean-class>com.minhdt.view.backing.modules.sys.SysUser_List</managed-bean-class>
-      <managed-bean-scope>backingBean</managed-bean-scope>
+      <managed-bean-scope>view</managed-bean-scope>
       <!--oracle-jdev-comment:managed-bean-jsp-link:1modules/sys/SysUser_List.jsff-->
+    </managed-bean>
+    <managed-bean id="__9">
+      <managed-bean-name>backing_modules_sys_SysUser_Add</managed-bean-name>
+      <managed-bean-class>com.minhdt.view.backing.modules.sys.SysUser_Add</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1modules/sys/SysUser_Add.jsff-->
+    </managed-bean>
+    <managed-bean id="__10">
+      <managed-bean-name>backing_modules_sys_SysUser_Edit</managed-bean-name>
+      <managed-bean-class>com.minhdt.view.backing.modules.sys.SysUser_Edit</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1modules/sys/SysUser_Edit.jsff-->
     </managed-bean>
     <view id="SysUser_List">
       <page>/modules/sys/SysUser_List.jsff</page>
     </view>
-    <view id="SysUser_Add"></view>
-    <view id="SysUser_Edit"></view>
+    <view id="SysUser_Add">
+      <page>/modules/sys/SysUser_Add.jsff</page>
+    </view>
+    <view id="SysUser_Edit">
+      <page>/modules/sys/SysUser_Edit.jsff</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>SysUser_List</from-activity-id>
       <control-flow-case id="__2">

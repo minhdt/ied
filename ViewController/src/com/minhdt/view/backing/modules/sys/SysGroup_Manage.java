@@ -4,7 +4,7 @@ import oracle.adf.view.rich.component.rich.RichDocument;
 import oracle.adf.view.rich.component.rich.RichForm;
 import oracle.adf.view.rich.component.rich.fragment.RichRegion;
 
-public class SysGroup {
+public class SysGroup_Manage {
     private RichForm f1;
     private RichDocument d1;
     private RichRegion r1;

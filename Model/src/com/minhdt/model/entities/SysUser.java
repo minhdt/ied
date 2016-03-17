@@ -52,6 +52,12 @@ public class SysUser implements Serializable {
     @Column(name = "USER_IMAGE")
     private String userImage;
     
+    private String phone;
+    
+    private String email;
+    
+    private String address;
+    
     @Column(nullable = false)
     private Integer status;
     
@@ -212,5 +218,29 @@ public class SysUser implements Serializable {
 
     public void setCheck(boolean check) {
         this.check = check;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
